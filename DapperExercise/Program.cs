@@ -18,14 +18,18 @@ namespace DapperExercise
 
             IDbConnection conn = new MySqlConnection(connString);
 
-            var repo = new DapperDepartmentRepository(conn);
+            var repo = new DapperProductRepository(conn);
 
-            var departments = repo.GetAllDepartments();
+            repo.CreateProduct("NewStuff", 20, 1);
 
-            foreach(var dept in departments)
-            {
-                Console.WriteLine($"{dept.DepartmentID} {dept.Name}");
-            }
+            var products = repo.GetAllProducts();
+
+            foreach(var prod in products)
+                {
+                    Console.WriteLine($"{prod.ProductID} {prod.Name}");
+                }
+
+            
         }
     }
 }
